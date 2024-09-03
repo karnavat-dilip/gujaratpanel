@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import GridLoader from 'react-spinners/GridLoader'
 import reportWebVitals from './reportWebVitals';
+const App =React.lazy(()=> import('./App'));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <React.Suspense fallback={<GridLoader style={{position:'absolute',top:'50%',left:'50%'}} color="#01a875" />}>
+      <App />
+    </React.Suspense>
   </React.StrictMode>
 );
 
