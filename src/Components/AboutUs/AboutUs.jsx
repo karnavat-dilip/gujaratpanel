@@ -220,7 +220,7 @@ function AboutUs() {
                                 </p>
                             </div>
                         </div>
-                        <div className='ourcustomer' data-aos="fade-up">
+                        {/* <div className='ourcustomer' data-aos="fade-up">
                             <div>
                                 <h1>What Our Customers Say ?</h1>
                             </div>
@@ -284,7 +284,7 @@ function AboutUs() {
                                 </Swiper>
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

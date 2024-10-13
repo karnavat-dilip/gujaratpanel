@@ -17,6 +17,21 @@ import atspanel from '../../Assets/43541_atspanel.jpg'
 import dolmccb from '../../Assets/49655_dolmccb.jpg'
 import dolgold from '../../Assets/69312_dolgold.png'
 import dolpanel from '../../Assets/80359_dolpanel (1).jpg'
+
+import Hp100msdol from '../../Assets/Hp100msdol.png'
+import Hp100mssd from '../../Assets/Hp100mssd.png'
+import Hp100sd from '../../Assets/Hp100sd.png'
+import Hp150ATS from '../../Assets/Hp150ATS.png'
+import Hp150msdol from '../../Assets/Hp150msdol.png'
+import Hp200ATS from '../../Assets/Hp200ATS.png'
+import Hp250ATS from '../../Assets/Hp250ATS.png'
+import Hp250msdol from '../../Assets/Hp250msdol.png'
+import Hp30msdol from '../../Assets/Hp30msdol.png'
+import Hp40msdol from '../../Assets/Hp40msdol.png'
+import Hp40mssd from '../../Assets/Hp40mssd.png'
+import Sphp3 from '../../Assets/S.php3.png'
+import Sphp5 from '../../Assets/S.php5.png'
+
 import ads2 from '../../Assets/ads2.png'
 import Domestic from '../../Assets/services_agri_icon.png'
 import Mining from '../../Assets/services_mining_icon.png'
@@ -49,7 +64,7 @@ import logo10 from '../../Assets/logo10.jpg'
 import logo11 from '../../Assets/logo11.jpg'
 import logo12 from '../../Assets/logo12.jpg'
 import logo13 from '../../Assets/logo13.jpg'
-
+import { Chart } from "react-google-charts";
 
 function AboutUs() {
   return (
@@ -76,11 +91,118 @@ function OurService() {
   );
 }
 
+const products = [
+  {
+    id: uuidv4(),
+    img: stardelta,
+    title: 'Star Delta Panel'
+  },
+  {
+    id: uuidv4(),
+    img: atspanel,
+    title: 'ATS Panel'
+  },
+  {
+    id: uuidv4(),
+    img: dolmccb,
+    title: 'Dol Mccb Panel'
+  },
+  {
+    id: uuidv4(),
+    img: dolgold,
+    title: 'Dol Gold Panel'
+  },
+  {
+    id: uuidv4(),
+    img: dolpanel,
+    title: 'Dol Panel'
+  },
+  {
+    id: uuidv4(),
+    img: star_delta_mccb,
+    title: 'Star Delta Mccb Panel'
+  },
 
+  {
+    id: uuidv4(),
+    img: Hp100msdol,
+    title: 'HP 100 MS Dol'
+  },
+  {
+    id: uuidv4(),
+    img: Hp100mssd,
+    title: 'HP 100 MS StarDelta'
+  },
+  {
+    id: uuidv4(),
+    img: Hp100sd,
+    title: 'HP 100 StarDelta'
+  },
+  {
+    id: uuidv4(),
+    img: Hp150ATS,
+    title: 'HP 150 ATS'
+  },
+  {
+    id: uuidv4(),
+    img: Hp150msdol,
+    title: 'HP 150 MS Dol'
+  },
+  {
+    id: uuidv4(),
+    img: Hp200ATS,
+    title: 'HP 200 ATS'
+  },
+  {
+    id: uuidv4(),
+    img: Hp250ATS,
+    title: 'HP 250 ATS'
+  },
+  {
+    id: uuidv4(),
+    img: Hp250msdol,
+    title: 'HP 250 MS Dol'
+  },
+  {
+    id: uuidv4(),
+    img: Hp30msdol,
+    title: 'HP 30 MS Dol'
+  },
+  {
+    id: uuidv4(),
+    img: Hp40msdol,
+    title: 'HP 40 MS Dol'
+  },
+  {
+    id: uuidv4(),
+    img: Hp40mssd,
+    title: 'Hp 40 ms Stardelta'
+  },
+  {
+    id: uuidv4(),
+    img: Sphp3,
+    title: 'Single Phase hp 3'
+  },
+  {
+    id: uuidv4(),
+    img: Sphp5,
+    title: 'Single Phase hp 5'
+  },
+]
 function Home() {
   const [counteron, setcounteron] = useState(false)
   const [content, setContent] = useState(AboutUs);
   const [activeLink, setActiveLink] = useState('about');
+  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLogoIndex((prevIndex) => (prevIndex + 1) % products.length);
+    }, 4000); // Change every 2 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, []);
+
 
   const handleNavigation = (contentComponent, linkName) => {
     setContent(contentComponent);
@@ -91,38 +213,26 @@ function Home() {
     AOS.init()
   }, [])
 
-  const products = [
-    {
-      id: uuidv4(),
-      img: stardelta,
-      title: 'Star Delta Panel'
-    },
-    {
-      id: uuidv4(),
-      img: atspanel,
-      title: 'ATS Panel'
-    },
-    {
-      id: uuidv4(),
-      img: dolmccb,
-      title: 'Dol Mccb Panel'
-    },
-    {
-      id: uuidv4(),
-      img: dolgold,
-      title: 'Dol Gold Panel'
-    },
-    {
-      id: uuidv4(),
-      img: dolpanel,
-      title: 'Dol Panel'
-    },
-    {
-      id: uuidv4(),
-      img: star_delta_mccb,
-      title: 'Star Delta Mccb Panel'
-    }
-  ]
+  const data = [
+    ["West Bangal", "Hours per Day"],
+    ["Jammu & Kashmir", 9],
+    ["Maharashtra", 6],
+    ["Kerala",5],
+    ["Rajasthan", 7],
+    ["Tamilnadu", 8],
+    ["Bihar", 9],
+    ["Andaman & Nicabar", 6],
+    ["Andhra-Pradesh", 8],
+    ["Uttar Pradesh", 11],
+    ["Jharkhand", 13],
+    ["Panjab", 12],
+    ["Delhi", 14],
+    ["Hariyana", 9],
+  ];
+
+  const options = {
+    title: "",
+  };
 
   const productapplication = [
     {
@@ -167,105 +277,20 @@ function Home() {
   return (
     <>
       <div className='swiper-container'>
-        <section className='slide'>
-          <div>
-            <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 4500,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: false,
-              }}
-              // navigation={true}
-              modules={[Autoplay, Navigation]}
-              className="mySwiper"
-            >
-              <img src={liquifyvector} id='img1' />
+        {/* <img src={liquifyvector} id='img1' /> */}
+        {/* <section className='slide'>
+          <div> */}
 
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <h1 className='animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>Star Delta Starter
-                    Motor</h1>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={stardelta} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                </div>
-
-              </SwiperSlide>
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={atspanel} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                  <h1 className='animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>ATS
-                    Motor</h1>
-                </div>
-
-              </SwiperSlide>
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <h1 className='animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>Dol Mccb
-                    Motor</h1>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={dolmccb} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                </div>
-
-              </SwiperSlide>
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={dolgold} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                  <h1 className='animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>Dol Gold
-                    Motor</h1>
-                </div>
-
-              </SwiperSlide>
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <h1 className='animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>Dol
-                    Motor</h1>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={dolpanel} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                </div>
-
-              </SwiperSlide>
-              <SwiperSlide>
-
-                {/* <img src={liquifyvector} id='img1' /> */}
-                <div className='child_slider'>
-                  <div className='inner-img'>
-                    <img src={round1} className='product-img1 animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                    <img src={star_delta_mccb} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }} />
-                  </div>
-                  <h1 className='animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '1s' }}>Star Delta Mccb
-                    Motor</h1>
-                </div>
-
-              </SwiperSlide>
-            </Swiper>
+        <div className='child_slider'>
+          <h1 className='animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }}>{products[currentLogoIndex].title}</h1>
+          <div className='inner-img'>
+            <img src={round1} className='product-img1 animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }} />
+            <img src={products[currentLogoIndex].img} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }} />
           </div>
-        </section>
+        </div>
+
+        {/* </div>
+        </section> */}
         <section data-aos="fade-up">
           <div className='container'>
             <div className='h1-container'>
@@ -434,79 +459,17 @@ function Home() {
         </section>
         <section data-aos="fade-up">
           <div className='container'>
-            <div className='h1-container'><h1>Our Client</h1></div>
-            <div className='product-container'>
-              <Swiper
-
-                breakpoints={{
-                  640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                    spaceBetween: 40,
-                  },
-                  1024: {
-                    slidesPerView: 5,
-                    spaceBetween: 50,
-                  },
-                }}
-                loop={true}
-                centeredSlides={true}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
-                pagination={true}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-
-              >
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo1} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo3} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo4} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo5} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo7} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo8} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo9} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo10} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo11} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo12} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={logo13} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={testy1} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={testy2} width='100' height='100' />
-                </SwiperSlide>
-                <SwiperSlide className='swiper-child h-209'>
-                  <img src={testy3} width='100' height='100' />
-                </SwiperSlide>
-              </Swiper>
+            <div className='h1-container'>
+              <h1>Our Client`s
+              </h1>
             </div>
+            <Chart
+              chartType="PieChart"
+              data={data}
+              options={options}
+              width={"100%"}
+              height={"400px"}
+            />
 
           </div>
         </section >

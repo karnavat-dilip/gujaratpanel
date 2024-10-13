@@ -30,6 +30,21 @@ import atspanel from '../../Assets/43541_atspanel.jpg'
 import dolmccb from '../../Assets/49655_dolmccb.jpg'
 import dolgold from '../../Assets/69312_dolgold.png'
 import dolpanel from '../../Assets/80359_dolpanel (1).jpg'
+
+import Hp100msdol from '../../Assets/Hp100msdol.png'
+import Hp100mssd from '../../Assets/Hp100mssd.png'
+import Hp100sd from '../../Assets/Hp100sd.png'
+import Hp150ATS from '../../Assets/Hp150ATS.png'
+import Hp150msdol from '../../Assets/Hp150msdol.png'
+import Hp200ATS from '../../Assets/Hp200ATS.png'
+import Hp250ATS from '../../Assets/Hp250ATS.png'
+import Hp250msdol from '../../Assets/Hp250msdol.png'
+import Hp30msdol from '../../Assets/Hp30msdol.png'
+import Hp40msdol from '../../Assets/Hp40msdol.png'
+import Hp40mssd from '../../Assets/Hp40mssd.png'
+import Sphp3 from '../../Assets/S.php3.png'
+import Sphp5 from '../../Assets/S.php5.png'
+
 import { v4 as uuidv4 } from 'uuid';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -215,36 +230,102 @@ function Header() {
 
     const products = [
         {
-            id: uuidv4(),
-            img: stardelta,
-            title: 'Star Delta Panel'
+          id: uuidv4(),
+          img: stardelta,
+          title: 'Star Delta Panel'
         },
         {
-            id: uuidv4(),
-            img: atspanel,
-            title: 'ATS Panel'
+          id: uuidv4(),
+          img: atspanel,
+          title: 'ATS Panel'
         },
         {
-            id: uuidv4(),
-            img: dolmccb,
-            title: 'Dol Mccb Panel'
+          id: uuidv4(),
+          img: dolmccb,
+          title: 'Dol Mccb Panel'
         },
         {
-            id: uuidv4(),
-            img: dolgold,
-            title: 'Dol Gold Panel'
+          id: uuidv4(),
+          img: dolgold,
+          title: 'Dol Gold Panel'
         },
         {
-            id: uuidv4(),
-            img: dolpanel,
-            title: 'Dol Panel'
+          id: uuidv4(),
+          img: dolpanel,
+          title: 'Dol Panel'
         },
         {
-            id: uuidv4(),
-            img: star_delta_mccb,
-            title: 'Star Delta Mccb Panel'
-        }
-    ]
+          id: uuidv4(),
+          img: star_delta_mccb,
+          title: 'Star Delta Mccb Panel'
+        },
+      
+        {
+          id: uuidv4(),
+          img: Hp100msdol,
+          title: 'HP 100 MS Dol'
+        },
+        {
+          id: uuidv4(),
+          img: Hp100mssd,
+          title: 'HP 100 MS StarDelta'
+        },
+        {
+          id: uuidv4(),
+          img: Hp100sd,
+          title: 'HP 100 StarDelta'
+        },
+        {
+          id: uuidv4(),
+          img: Hp150ATS,
+          title: 'HP 150 ATS'
+        },
+        {
+          id: uuidv4(),
+          img: Hp150msdol,
+          title: 'HP 150 MS Dol'
+        },
+        {
+          id: uuidv4(),
+          img: Hp200ATS,
+          title: 'HP 200 ATS'
+        },
+        {
+          id: uuidv4(),
+          img: Hp250ATS,
+          title: 'HP 250 ATS'
+        },
+        {
+          id: uuidv4(),
+          img: Hp250msdol,
+          title: 'HP 250 MS Dol'
+        },
+        {
+          id: uuidv4(),
+          img: Hp30msdol,
+          title: 'HP 30 MS Dol'
+        },
+        {
+          id: uuidv4(),
+          img: Hp40msdol,
+          title: 'HP 40 MS Dol'
+        },
+        {
+          id: uuidv4(),
+          img: Hp40mssd,
+          title: 'Hp 40 ms Stardelta'
+        },
+        {
+          id: uuidv4(),
+          img: Sphp3,
+          title: 'Single Phase hp 3'
+        },
+        {
+          id: uuidv4(),
+          img: Sphp5,
+          title: 'Single Phase hp 5'
+        },
+      ]
 
     return (
         <>

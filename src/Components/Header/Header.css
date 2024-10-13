@@ -152,6 +152,8 @@
     column-gap: 50px;
     padding: 11px;
     margin: 11px;
+    height: 550px;
+    overflow-y: scroll;
 }
 
 .p-list-container div {
