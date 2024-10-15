@@ -460,14 +460,14 @@ function Home() {
         <section data-aos="fade-up">
           <div className='container'>
             <div className='h1-container'>
-              <h1>Our Client`s
+              <h1>Our Service
               </h1>
             </div>
             <Chart
               chartType="PieChart"
               data={data}
               options={options}
-              width={"100%"}
+              loader={<div>Loading Chart...</div>}
               height={"400px"}
             />
 
