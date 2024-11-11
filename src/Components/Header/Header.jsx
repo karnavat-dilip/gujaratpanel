@@ -97,7 +97,7 @@ function Header() {
         e.preventDefault();
         setloading(true)
         try {
-            const response = await axios.post('/send-email', emailData);
+            const response = await axios.post(`${process.env.REACT_APP_URL}/send-email`, emailData);
             console.log(response);
 
             console.log('Email sent successfully');
