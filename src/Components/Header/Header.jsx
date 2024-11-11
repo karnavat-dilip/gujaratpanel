@@ -60,6 +60,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
@@ -91,6 +92,7 @@ function Header() {
             [name]: value,
         });
     };
+    axios.defaults.withCredentials=true;
     const handleSubmit = async (e) => {
         e.preventDefault();
         setloading(true)
@@ -339,12 +341,12 @@ function Header() {
                             <div>
                                 <ul className='header-user-menu'>
                                     <li>
-                                        <IoIosCall /><a href='tel:+91 9825015702'>+91 9825015702</a>
-                                        <a href='tel:+91 9898487120'>+91 9898487120</a>
+                                        <IoIosCall /><Link to='tel:+91 9825015702'>+91 9825015702</Link>
+                                        <Link to='tel:+91 9898487120'>+91 9898487120</Link>
                                     </li>
                                     <li>
                                         <IoMdMail />
-                                        <a href='mailto:gujaratpanel@gmail.com'>gujaratpanel@gmail.com</a>
+                                        <Link to='mailto:gujaratpanel@gmail.com'>gujaratpanel@gmail.com</Link>
                                     </li>
 
 
@@ -371,10 +373,10 @@ function Header() {
                             <div className={`nav-links ${isOpen ? 'open' : ''}`}>
 
                                 <ul>
-                                    <li><a href="/">Home</a></li>
+                                    <li><Link to="/">Home</Link></li>
                                     <li className="dropdown">
-                                        <a href='/Allproduct'>product <TfiAngleDown />
-                                        </a>
+                                        <Link to='/Allproduct'>product <TfiAngleDown />
+                                        </Link>
                                         <div className="stone">
                                             <div className='container'>
                                                 <div className='p-list-container'>
@@ -382,10 +384,10 @@ function Header() {
                                                         products?.map((product, index) => {
                                                             return (
                                                                 <div key={product.id}>
-                                                                    <a href={`/Allproduct/${index + 1}`}>
+                                                                    <Link to={`/Allproduct/${index + 1}`}>
                                                                         <img src={product.img} width='100' style={{ alignSelf: 'center' }} />
                                                                         <h3>{product.title}</h3>
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             )
                                                         })
@@ -394,24 +396,24 @@ function Header() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="/qualitypolicy">quality policy</a></li>
+                                    <li><Link to="/qualitypolicy">quality policy</Link></li>
                                     <li className="dropdown">
-                                        <a>gallery <TfiAngleDown />
-                                        </a>
+                                        <Link>gallery <TfiAngleDown />
+                                        </Link>
                                         <div className="dropdown-content">
-                                            <a href="/photos">Photos</a>
-                                            <a href="/videos">Videos</a>
+                                            <Link to="/photos">Photos</Link>
+                                            <Link to="/videos">Videos</Link>
                                         </div>
                                     </li>
-                                    <li><a href="/about">About Us</a></li>
-                                    <li><a href="/contact">Contact Us</a></li>
+                                    <li><Link to="/about">About Us</Link></li>
+                                    <li><Link to="/contact">Contact Us</Link></li>
                                 </ul>
 
 
                                 <ul className='download'>
                                     <li>
-                                        <a onClick={handleClickOpen}>BROUCHER <MdDownload />
-                                        </a>
+                                        <Link onClick={handleClickOpen}>BROUCHER <MdDownload />
+                                        </Link>
                                     </li>
                                 </ul>
 
@@ -506,12 +508,12 @@ function Header() {
             <div className='Whatsapp'>
                 <ul>
                     <li>
-                        <a href='https://api.whatsapp.com/send/?phone=919825015702&text&type=phone_number&app_absent=0' target='_blank'><FaSquareWhatsapp style={{
+                        <Link to='https://api.whatsapp.com/send/?phone=919825015702&text&type=phone_number&app_absent=0' target='_blank'><FaSquareWhatsapp style={{
                             width: '47px',
                             height: '48px',
                             color: '#25d366'
                         }} />
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 
@@ -523,14 +525,14 @@ function Header() {
                         <div className="row">
                             <div className="col-12 d-flex justify-content-between align-items-center">
                                 <div className="mobile-header--left">
-                                    <a href="/" className="mobile-logo-link">
+                                    <Link to="/" className="mobile-logo-link">
                                         <img
                                             src={glogo}
                                             alt="logo not available"
                                             width='100'
                                             className="mobile-logo-img"
                                         />
-                                    </a>
+                                    </Link>
                                 </div>
                                 <Menu>
                                     <div className="offcanvas-mobile-menu-wrapper">
@@ -543,19 +545,19 @@ function Header() {
                                             <ul className="mobile-menu-user-menu">
                                                 <li className="header-user-menu-link">
                                                     <IoIosCall />
-                                                    <a href="tel:+91 9898487120" target="_blank">
+                                                    <Link to="tel:+91 9898487120" target="_blank">
                                                         <b> +91 9898487120</b>
-                                                    </a>
-                                                    <a href="tel:+91 9825015702" target="_blank">
+                                                    </Link>
+                                                    <Link to="tel:+91 9825015702" target="_blank">
                                                         <b>+91 9825015702</b>
-                                                    </a>
+                                                    </Link>
                                                 </li>
-                                                <a href="tel:+91 9825015702"></a>
+                                                <Link to="tel:+91 9825015702"></Link>
                                                 <li className="header-user-menu-link">
                                                     <IoMdMail />
-                                                    <a href="mailto:gujaratpanel@gmail.com" target="_blank">
+                                                    <Link to="mailto:gujaratpanel@gmail.com" target="_blank">
                                                         &nbsp;
-                                                    </a>
+                                                    </Link>
                                                     <b> gujaratpanel@gmail.com</b>
                                                 </li>
                                                 {/*                <li class="header-user-menu-link"><div id="google_translate_element" class="google_translate_element"></div></li>*/}
@@ -604,7 +606,7 @@ function Header() {
                                                 <ul>
                                                     <li className="mobileli">
 
-                                                        <a href="/"><FaHome className='fa-icon' />Home</a>
+                                                        <Link to="/"><FaHome className='fa-icon' />Home</Link>
                                                     </li>
 
                                                     <li className="mobileli">
@@ -619,69 +621,69 @@ function Header() {
                                                                     alignItems: 'center'
                                                                 }}>
                                                                     <AiOutlineAppstore className='fa-icon' />
-                                                                    <a href='/Allproduct'>
+                                                                    <Link to='/Allproduct'>
                                                                         Products
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </AccordionSummary>
                                                             <AccordionDetails>
                                                                 <ul className="mobile-sub-menu">
                                                                     <li>
-                                                                        <a href="/Allproduct/1">Star Delta Panel</a>
+                                                                        <Link to="/Allproduct/1">Star Delta Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/2">ATS Panel</a>
+                                                                        <Link to="/Allproduct/2">ATS Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/3">Dol Mccb Panel</a>
+                                                                        <Link to="/Allproduct/3">Dol Mccb Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/4">Dol Gold Panel</a>
+                                                                        <Link to="/Allproduct/4">Dol Gold Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/5">Dol Panel</a>
+                                                                        <Link to="/Allproduct/5">Dol Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/6">Star Delta Mccb Panel</a>
+                                                                        <Link to="/Allproduct/6">Star Delta Mccb Panel</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/7">HP 100 MS Dol</a>
+                                                                        <Link to="/Allproduct/7">HP 100 MS Dol</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/8">HP 100 MS StarDelta</a>
+                                                                        <Link to="/Allproduct/8">HP 100 MS StarDelta</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/9">HP 100 StarDelta</a>
+                                                                        <Link to="/Allproduct/9">HP 100 StarDelta</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/10">HP 150 ATS</a>
+                                                                        <Link to="/Allproduct/10">HP 150 ATS</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/11">HP 150 MS Dol</a>
+                                                                        <Link to="/Allproduct/11">HP 150 MS Dol</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/12">HP 200 ATS</a>
+                                                                        <Link to="/Allproduct/12">HP 200 ATS</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/13">HP 250 ATS</a>
+                                                                        <Link to="/Allproduct/13">HP 250 ATS</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/14">HP 250 MS Dol</a>
+                                                                        <Link to="/Allproduct/14">HP 250 MS Dol</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/15">HP 30 MS Dol</a>
+                                                                        <Link to="/Allproduct/15">HP 30 MS Dol</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/16">HP 40 MS Dol</a>
+                                                                        <Link to="/Allproduct/16">HP 40 MS Dol</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/17">Hp 40 ms Stardelta</a>
+                                                                        <Link to="/Allproduct/17">Hp 40 ms Stardelta</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/18">Single Phase hp 3</a>
+                                                                        <Link to="/Allproduct/18">Single Phase hp 3</Link>
                                                                     </li>
                                                                     <li>
-                                                                        <a href="/Allproduct/19">Single Phase hp 5</a>
+                                                                        <Link to="/Allproduct/19">Single Phase hp 5</Link>
                                                                     </li>
 
                                                                 </ul>
@@ -690,34 +692,34 @@ function Header() {
                                                     </li>
 
                                                     <li className="mobileli">
-                                                        <a href="/qualitypolicy" className="menuBtn">
+                                                        <Link to="/qualitypolicy" className="menuBtn">
                                                             <MdEqualizer className='fa-icon' />
                                                             <span>Quality Policy</span>
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <a href="/about" className="menuBtn">
+                                                        <Link to="/about" className="menuBtn">
                                                             <FaCircleInfo className='fa-icon' />
                                                             About Us
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <a
+                                                        <Link
                                                             onClick={handleClickOpen}
                                                             className="downalodMenu"
                                                         >
                                                             <FaCloudDownloadAlt className='fa-icon' />
                                                             Broucher
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                     <li className="mobileli">
                                                         <div>
                                                             <CustomAccordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                                                 <AccordionSummary
                                                                     expandIcon={<ExpandMoreIcon />}
-
+                                                                   
                                                                 >
                                                                     <GrGallery className='fa-icon' />
                                                                     Gallery
@@ -725,10 +727,10 @@ function Header() {
                                                                 <AccordionDetails>
                                                                     <ul className="mobile-sub-menu">
                                                                         <li>
-                                                                            <a href="/photos">Photos</a>
+                                                                            <Link to="/photos">Photos</Link>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="/videos">Videos</a>
+                                                                            <Link to="/videos">Videos</Link>
                                                                         </li>
 
                                                                     </ul>
@@ -738,7 +740,7 @@ function Header() {
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <a href="/contact"><MdContactPhone className='fa-icon' />Contact Us</a>
+                                                        <Link to="/contact"><MdContactPhone className='fa-icon' />Contact Us</Link>
                                                     </li>
                                                 </ul>
                                             </div>{" "}

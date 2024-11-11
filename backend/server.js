@@ -12,7 +12,13 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://gujaratpanel.vercel.app"],
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../build')));
@@ -39,7 +45,7 @@ app.post('/send-email', (req, res) => {
   const mailOptions = {
     from: process.env.SMTP_MAIL,
     to: email,
-    subject: 'Gujarat panel',
+    subject: 'Welcome to Gujarat Panel',
     text:'Welcome to Gujarat Panel',
     attachments: [
       {
@@ -58,7 +64,7 @@ app.post('/send-email', (req, res) => {
     html: `<b>Email from ${email}</br>
     I received email successfully.</br>
     Contact No: ${number}</br>
-    Requirements:${message}
+    Message:${message}
     </b>`,
 
   }

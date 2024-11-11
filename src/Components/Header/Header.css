@@ -873,3 +873,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded {
+    height: 48px !important;
+    min-height: 0px !important;
+}
+
+.css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root {
+    height: 48px !important;
+    min-height: 0px !important;
+}
