@@ -7,3 +7,9 @@ html{
   font-size: 13px;
   font-family:'IBM Plex Sans', sans-serif;
 }
+body{
+  user-select: none;
+}
+body img{
+  -webkit-user-drag: none;
+}

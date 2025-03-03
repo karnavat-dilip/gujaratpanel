@@ -57,9 +57,13 @@ function App() {
     setShowPopup(false);
   };
 
+  const handleContextMenu = (e) => {
+    e.preventDefault();
+  };
+
 
   return (
-    <>
+    <div onContextMenu={handleContextMenu}>
       {showPopup && !shownIp ? <Popup texts={texts} speed={typingSpeed} pause={pauseTime} closePopup={handleClosePopup} /> :
         <Router>
           <Header />
@@ -76,7 +80,7 @@ function App() {
           <Footer />
         </Router>
       }
-    </>
+    </div>
   )
 
 

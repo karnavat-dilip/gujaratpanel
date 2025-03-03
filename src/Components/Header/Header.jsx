@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { IoIosCall } from "react-icons/io";
 import { IoMdMail } from "react-icons/io";
 import './Header.css'
-import GUJARAT_PANEL_broucher from '../../Assets/GUJARAT PANEL broucher.pdf'
 import glogo from '../../Assets/glogo (2).png'
 import gemlogo from '../../Assets/gemlogo.jpeg'
 import Iso_90012015 from '../../Assets/Iso-9001-2015.png'
@@ -48,19 +47,16 @@ import Sphp5 from '../../Assets/S.php5.png'
 import { v4 as uuidv4 } from 'uuid';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import broucher from '../../Assets/GUJARAT PANEL broucher.pdf'
 import { Checkmark } from 'react-checkmark'
 import TranslateComponent from '../TranslateComponent';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const CustomAccordion = styled(Accordion)(({ theme }) => ({
@@ -77,6 +73,7 @@ function Header() {
     const [open, setOpen] = useState(false);
     const [opencheckcircle, setopencheckcircle] = useState(false);
     const [loading, setloading] = useState(false)
+    const [menu, setmenu] = useState(false)
     const [emailData, setEmailData] = useState({
         name: '',
         email: '',
@@ -184,46 +181,46 @@ function Header() {
     };
     const currentLocation = window.location.href;
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const links = document.querySelectorAll('.nav-links > ul > li > a');
-        links.forEach(link => {
-            if (link.href === currentLocation) {
-                link.classList.add('active');
-            }
-        });
+    //     const links = document.querySelectorAll('.nav-links > ul > li > a');
+    //     links.forEach(link => {
+    //         if (link.href === currentLocation) {
+    //             link.classList.add('active');
+    //         }
+    //     });
 
-    }, [])
-    useEffect(() => {
+    // },[])
+    // useEffect(() => {
 
-        const links = document.querySelectorAll('.offcanvas-menu > ul > li > a');
-        links.forEach(link => {
-            if (link.href === currentLocation) {
-                link.classList.add('active');
-            }
-        });
+    //     const links = document.querySelectorAll('.offcanvas-menu > ul > li > a');
+    //     links.forEach(link => {
+    //         if (link.href === currentLocation) {
+    //             link.classList.add('active');
+    //         }
+    //     });
 
-    }, [])
-    useEffect(() => {
+    // }, [])
+    // useEffect(() => {
 
-        const links = document.querySelectorAll('.mobile-sub-menu > li > a');
-        links.forEach(link => {
-            if (link.href === currentLocation) {
-                link.classList.add('active1');
-            }
-        });
+    //     const links = document.querySelectorAll('.mobile-sub-menu > li > a');
+    //     links.forEach(link => {
+    //         if (link.href === currentLocation) {
+    //             link.classList.add('active1');
+    //         }
+    //     });
 
-    }, [])
-    useEffect(() => {
+    // }, [])
+    // useEffect(() => {
 
-        const links = document.querySelectorAll('.dropdown-content a');
-        links.forEach(link => {
-            if (link.href === currentLocation) {
-                link.classList.add('active-sub-menu');
-            }
-        });
+    //     const links = document.querySelectorAll('.dropdown-content a');
+    //     links.forEach(link => {
+    //         if (link.href === currentLocation) {
+    //             link.classList.add('active-sub-menu');
+    //         }
+    //     });
 
-    }, [])
+    // }, [])
 
 
     const toggleNavbar = () => {
@@ -373,10 +370,10 @@ function Header() {
                             <div className={`nav-links ${isOpen ? 'open' : ''}`}>
 
                                 <ul>
-                                    <li><Link to="/">Home</Link></li>
+                                    <li><NavLink to="/" activeClassName="active">Home</NavLink></li>
                                     <li className="dropdown">
-                                        <Link to='/Allproduct'>product <TfiAngleDown />
-                                        </Link>
+                                        <NavLink to='/Allproduct' activeClassName="active">product <TfiAngleDown />
+                                        </NavLink>
                                         <div className="stone">
                                             <div className='container'>
                                                 <div className='p-list-container'>
@@ -396,24 +393,24 @@ function Header() {
                                             </div>
                                         </div>
                                     </li>
-                                    <li><Link to="/qualitypolicy">quality policy</Link></li>
+                                    <li><NavLink to="/qualitypolicy" activeClassName="active">quality policy</NavLink></li>
                                     <li className="dropdown">
                                         <Link>gallery <TfiAngleDown />
                                         </Link>
                                         <div className="dropdown-content">
-                                            <Link to="/photos">Photos</Link>
-                                            <Link to="/videos">Videos</Link>
+                                            <NavLink to="/photos" activeClassName="active">Photos</NavLink>
+                                            <NavLink to="/videos" activeClassName="active">Videos</NavLink>
                                         </div>
                                     </li>
-                                    <li><Link to="/about">About Us</Link></li>
-                                    <li><Link to="/contact">Contact Us</Link></li>
+                                    <li><NavLink to="/about" activeClassName="active">About Us</NavLink></li>
+                                    <li><NavLink to="/contact" activeClassName="active">Contact Us</NavLink></li>
                                 </ul>
 
 
                                 <ul className='download'>
                                     <li>
-                                        <Link onClick={handleClickOpen}>BROUCHER <MdDownload />
-                                        </Link>
+                                        <a href={broucher} download>BROUCHER <MdDownload />
+                                        </a>
                                     </li>
                                 </ul>
 
@@ -534,7 +531,8 @@ function Header() {
                                         />
                                     </Link>
                                 </div>
-                                <Menu>
+                                <Menu isOpen={menu} onStateChange={(state) => setmenu(state.isOpen)} 
+                                >
                                     <div className="offcanvas-mobile-menu-wrapper">
                                         {/* Start Mobile Menu User Top */}
                                         <div className="mobile-menu-top">
@@ -606,7 +604,7 @@ function Header() {
                                                 <ul>
                                                     <li className="mobileli">
 
-                                                        <Link to="/"><FaHome className='fa-icon' />Home</Link>
+                                                        <NavLink onClick={()=>setmenu(false)} to="/" activeClassName="active"><FaHome className='fa-icon' />Home</NavLink>
                                                     </li>
 
                                                     <li className="mobileli">
@@ -621,7 +619,7 @@ function Header() {
                                                                     alignItems: 'center'
                                                                 }}>
                                                                     <AiOutlineAppstore className='fa-icon' />
-                                                                    <Link to='/Allproduct'>
+                                                                    <Link onClick={()=>setmenu(false)} to='/Allproduct'>
                                                                         Products
                                                                     </Link>
                                                                 </div>
@@ -629,61 +627,61 @@ function Header() {
                                                             <AccordionDetails>
                                                                 <ul className="mobile-sub-menu">
                                                                     <li>
-                                                                        <Link to="/Allproduct/1">Star Delta Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/1">Star Delta Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/2">ATS Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/2">ATS Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/3">Dol Mccb Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/3">Dol Mccb Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/4">Dol Gold Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/4">Dol Gold Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/5">Dol Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/5">Dol Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/6">Star Delta Mccb Panel</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/6">Star Delta Mccb Panel</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/7">HP 100 MS Dol</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/7">HP 100 MS Dol</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/8">HP 100 MS StarDelta</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/8">HP 100 MS StarDelta</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/9">HP 100 StarDelta</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/9">HP 100 StarDelta</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/10">HP 150 ATS</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/10">HP 150 ATS</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/11">HP 150 MS Dol</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/11">HP 150 MS Dol</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/12">HP 200 ATS</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/12">HP 200 ATS</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/13">HP 250 ATS</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/13">HP 250 ATS</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/14">HP 250 MS Dol</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/14">HP 250 MS Dol</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/15">HP 30 MS Dol</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/15">HP 30 MS Dol</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/16">HP 40 MS Dol</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/16">HP 40 MS Dol</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/17">Hp 40 ms Stardelta</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/17">Hp 40 ms Stardelta</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/18">Single Phase hp 3</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/18">Single Phase hp 3</NavLink>
                                                                     </li>
                                                                     <li>
-                                                                        <Link to="/Allproduct/19">Single Phase hp 5</Link>
+                                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/Allproduct/19">Single Phase hp 5</NavLink>
                                                                     </li>
 
                                                                 </ul>
@@ -692,27 +690,28 @@ function Header() {
                                                     </li>
 
                                                     <li className="mobileli">
-                                                        <Link to="/qualitypolicy" className="menuBtn">
+                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/qualitypolicy" className="menuBtn">
                                                             <MdEqualizer className='fa-icon' />
                                                             <span>Quality Policy</span>
-                                                        </Link>
+                                                        </NavLink>
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <Link to="/about" className="menuBtn">
+                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/about" className="menuBtn">
                                                             <FaCircleInfo className='fa-icon' />
                                                             About Us
-                                                        </Link>
+                                                        </NavLink>
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <Link
-                                                            onClick={handleClickOpen}
+                                                        <a
+                                                            href={broucher}
+                                                            download
                                                             className="downalodMenu"
                                                         >
                                                             <FaCloudDownloadAlt className='fa-icon' />
                                                             Broucher
-                                                        </Link>
+                                                        </a>
                                                     </li>
                                                     <li className="mobileli">
                                                         <div>
@@ -727,10 +726,10 @@ function Header() {
                                                                 <AccordionDetails>
                                                                     <ul className="mobile-sub-menu">
                                                                         <li>
-                                                                            <Link to="/photos">Photos</Link>
+                                                                            <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/photos">Photos</NavLink>
                                                                         </li>
                                                                         <li>
-                                                                            <Link to="/videos">Videos</Link>
+                                                                            <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/videos">Videos</NavLink>
                                                                         </li>
 
                                                                     </ul>
@@ -740,7 +739,7 @@ function Header() {
                                                     </li>
                                                     <li className="mobileli">
 
-                                                        <Link to="/contact"><MdContactPhone className='fa-icon' />Contact Us</Link>
+                                                        <NavLink onClick={()=>setmenu(false)} activeClassName="active" to="/contact"><MdContactPhone className='fa-icon' />Contact Us</NavLink>
                                                     </li>
                                                 </ul>
                                             </div>{" "}

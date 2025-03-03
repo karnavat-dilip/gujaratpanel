@@ -142,7 +142,7 @@ function Footer() {
                     </div>
                 </div>
                     <div className='copyright'>
-                        <p>Copyright © 2024 Gujarat Panel | All Rights reserved Designed & Developed By <a href='tel:+91 9913448958'>Dilip Karnavat</a></p>
+                        <p>Copyright © 2024 Gujarat Panel | All Rights reserved Designed & Developed By <a href='tel:+91 9913448958'>Er Karnavat Dilip</a></p>
                     </div>
             </footer >
         </>

@@ -25,6 +25,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { v4 as uuidv4 } from 'uuid';
 import './AllProducts.css'
+import { Link } from 'react-router-dom'
 function AllProduct() {
 
   useEffect(() => {
@@ -156,7 +157,7 @@ function AllProduct() {
                 {
                   products?.map((product,index)=>{
                         return(
-                          <a key={product.id} className='product-child' href={`/Allproduct/${index+1}`}>
+                          <Link key={product.id} className='product-child' to={`/Allproduct/${index+1}`}>
                             <h4>{product.title}</h4>
                             <img src={product.img} width='100'/>
                             <h3>Description</h3>
@@ -164,7 +165,7 @@ function AllProduct() {
                             <ul>
                               <li><a >Read More</a></li>
                             </ul>
-                          </a>
+                          </Link>
                         )
                   })
                 }

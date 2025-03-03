@@ -65,6 +65,7 @@ import logo11 from '../../Assets/logo11.jpg'
 import logo12 from '../../Assets/logo12.jpg'
 import logo13 from '../../Assets/logo13.jpg'
 import { Chart } from "react-google-charts";
+import { Link } from 'react-router-dom';
 
 function AboutUs() {
   return (
@@ -198,7 +199,7 @@ function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentLogoIndex((prevIndex) => (prevIndex + 1) % products.length);
-    }, 4000); // Change every 2 seconds
+    }, 2000); // Change every 2 seconds
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
@@ -282,10 +283,10 @@ function Home() {
           <div> */}
 
         <div className='child_slider'>
-          <h1 className='animate__animated animate__backInLeft animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }}>{products[currentLogoIndex].title}</h1>
+          <h1 className='animate__animated animate__backInLeft' >{products[currentLogoIndex].title}</h1>
           <div className='inner-img'>
-            <img src={round1} className='product-img1 animate__animated animate__backInRight animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }} />
-            <img src={products[currentLogoIndex].img} className='product-img animate__animated animate__backInUp animate__infinite' style={{ animationDuration: '4s', animationDelay: '4s' }} />
+            <img src={round1} className='product-img1 animate__animated animate__backInRight'  />
+            <img src={products[currentLogoIndex].img} className='product-img animate__animated animate__backInUp'  />
           </div>
         </div>
 
@@ -353,10 +354,10 @@ function Home() {
                     return (
                       <SwiperSlide key={product.id} className='swiper-child'>
                         {/* <div key={product.id} className='swiper-child'> */}
-                        <a href={`/Allproduct/${index + 1}`}>
-                          <img src={product.img} width='100px' height='100px' />
+                        <Link to={`/Allproduct/${index + 1}`}>
+                          <img src={product.img} width='100px' />
                           <h3>{product.title}</h3>
-                        </a>
+                        </Link>
                         {/* </div> */}
                       </SwiperSlide>
 

@@ -26,7 +26,7 @@ import Hp40mssd from '../../Assets/Hp40mssd.png'
 import Sphp3 from '../../Assets/S.php3.png'
 import Sphp5 from '../../Assets/S.php5.png'
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ReactImageMagnify from 'react-image-magnify';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -573,14 +573,14 @@ function ProductById() {
                                 products?.map((product, index) => {
                                     return (
                                         <SwiperSlide key={product.id} className='related-product'>
-                                            <a key={product.id} href={`/Allproduct/${index + 1}`}>
+                                            <Link key={product.id} to={`/Allproduct/${index + 1}`}>
                                                 <img src={product.img} width='100' />
                                                 <h4>{product.title}</h4>
                                                 <p>{`${product.description.slice(0, 48)}...`}</p>
                                                 <ul>
                                                     <li><a >Read More</a></li>
                                                 </ul>
-                                            </a>
+                                            </Link>
                                         </SwiperSlide>
                                     )
                                 })
